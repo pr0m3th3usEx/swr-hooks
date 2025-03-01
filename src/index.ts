@@ -11,10 +11,18 @@ import useSWR, {
 } from 'swr';
 import useSWRMutation, { SWRMutationConfiguration } from 'swr/mutation';
 
-export const useApiQuery = <Result = unknown, Error = unknown>(
+export const useApiQuery = <
+  Result = unknown,
+  Error = unknown,
+  SWROptions extends
+    | SWRConfiguration<Result, Error, BareFetcher<Result>>
+    | undefined =
+    | SWRConfiguration<Result, Error, BareFetcher<Result>>
+    | undefined,
+>(
   key: Key,
   queryFn: Fetcher<Result>,
-  swrOptions?: SWRConfiguration<Result, Error, BareFetcher<Result>> | undefined,
+  swrOptions?: SWROptions,
 ) => {
   const { data, error, isLoading, isValidating, mutate } = useSWR<
     Result,
@@ -67,10 +75,15 @@ export const useApiLazyQuery = <
   Result = unknown,
   Args = never,
   Error = unknown,
+  SWROptions extends
+    | SWRMutationConfiguration<Result, Error, BareFetcher<Result>>
+    | undefined =
+    | SWRMutationConfiguration<Result, Error, BareFetcher<Result>>
+    | undefined,
 >(
   key: Key,
   queryFn: (_: unknown, { arg }: { arg: Args }) => Promise<Result>,
-  swrOptions?: SWRMutationConfiguration<Result, Error, Key> | undefined,
+  swrOptions?: SWROptions,
 ) => {
   const { trigger, reset, isMutating, data, error } = useSWRMutation<
     Result,

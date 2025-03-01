@@ -17,32 +17,6 @@ pnpm add swr swr-hooks
 
 This library provides three main hooks for different data fetching scenarios:
 
-### `useApiQuery` - Automatic Data Fetching
-
-Use this hook when you need to fetch data automatically when a component mounts.
-
-```ts
-import { useApiQuery } from 'swr-hooks';
-
-function UserProfile({ userId }) {
-  const { data, error, isLoading, isValidating, revalidate } = useApiQuery(
-    `/api/users/${userId}`,
-    fetcher,
-    { revalidateOnFocus: false }
-  );
-  
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error loading user</div>;
-  
-  return (
-    <div>
-      <h1>{data.name}</h1>
-      <button onClick={revalidate}>Refresh</button>
-    </div>
-  );
-}
-```
-
 ### `useApiMutation` - Data Modifications
 
 Use this hook when you need to create, update, or delete data.
@@ -87,6 +61,40 @@ function CreatePost() {
         {isMutating ? 'Saving...' : 'Create Post'}
       </button>
     </form>
+  );
+}
+```
+
+**Key Advantage**: Unlike SWR's native mutation hooks, `useApiMutation` provides a standardized pattern for data manipulation across your entire application.
+
+With `useApiMutation`:
+- Cache invalidation is automatically handled with a key matcher function
+- Loading states are managed internally
+- The API is consistent across all mutation operations
+- Error handling is standardized
+
+### `useApiQuery` - Automatic Data Fetching
+
+Use this hook when you need to fetch data automatically when a component mounts.
+
+```ts
+import { useApiQuery } from 'swr-hooks';
+
+function UserProfile({ userId }) {
+  const { data, error, isLoading, isValidating, revalidate } = useApiQuery(
+    `/api/users/${userId}`,
+    fetcher,
+    { revalidateOnFocus: false }
+  );
+  
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error loading user</div>;
+  
+  return (
+    <div>
+      <h1>{data.name}</h1>
+      <button onClick={revalidate}>Refresh</button>
+    </div>
   );
 }
 ```
