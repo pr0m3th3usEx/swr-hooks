@@ -70,7 +70,7 @@ export const useApiLazyQuery = <
 >(
   key: Key,
   queryFn: (_: unknown, { arg }: { arg: Args }) => Promise<Result>,
-  swrOptions: SWRMutationConfiguration<Result, Error, Key>,
+  swrOptions?: SWRMutationConfiguration<Result, Error, Key> | undefined,
 ) => {
   const { trigger, reset, isMutating, data, error } = useSWRMutation<
     Result,
