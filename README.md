@@ -135,9 +135,13 @@ function SearchResults() {
 }
 ```
 
+### Examples
+
+Other usage examples are provided [here](./examples/)
+
 ### Additional Notes
 
-- This library works with both client-side and server-side rendered Next.js applications (see examples)
+- This library works with both client-side and server-side rendered Next.js applications
 - For SSR support, ensure you're using the 'use client' directive as shown at the top of the module
 
 
