@@ -2,6 +2,7 @@
   "name": "swr-hooks",
   "version": "1.0.0",
   "description": "SWR Hooks wrappers to split query and mutation operations",
+  "type": "module",
   "exports": {
     "default": {
       "types": "./dist/index.d.ts",
@@ -27,6 +28,10 @@
   },
   "bugs": {
     "url": "https://github.com/pr0m3th3usEx/swr-hooks/issues"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
   },
   "homepage": "https://github.com/pr0m3th3usEx/swr-hooks#readme",
   "author": "Pr0m3th3usEx",
