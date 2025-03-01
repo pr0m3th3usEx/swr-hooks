@@ -1,0 +1,41 @@
+{
+  "name": "swr-hooks",
+  "version": "1.0.0",
+  "description": "SWR Hooks wrappers to split query and mutation operations",
+  "exports": {
+    "default": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "exit 1",
+    "lint": "eslint . --ext .ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test"
+  },
+  "keywords": [
+    "swr",
+    "fetch"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pr0m3th3usEx/swr-hooks.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pr0m3th3usEx/swr-hooks/issues"
+  },
+  "homepage": "https://github.com/pr0m3th3usEx/swr-hooks#readme",
+  "author": "Pr0m3th3usEx",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "license": "GNU GENERAL PUBLIC LICENSE",
+  "dependencies": {
+    "swr": "^2.3.2"
+  }
+}
